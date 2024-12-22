@@ -17,9 +17,10 @@ const Header = () => {
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-5">
               <div className="row">
                 <div className="col-xs-2">
-                  <Link to="/exchange.html">
+                  <Link to="/overview">
                     <div className="crypt-logo">
-                      <img src="images/logo.png" alt="Logo" />
+                    <img style={{ width: '50px' }} src="src/assets/images/logo.png" alt="Logo" />
+
                     </div>
                   </Link>
                 </div>
