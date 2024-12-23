@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Component Imports
+
 import Header from './Components/SingleComponents/Header';
+
+import { UserProvider } from './Components/Contexts/UserProvider';
 
 import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
-import MarketCapTable from './Components/Pages/MarketCapTable.jsx'
+import MarketCapTable from './Components/Pages/MarketCapTable'
 
 
 const App = () => {
@@ -13,6 +15,7 @@ const App = () => {
   
   return (
     <div className='crypt-dark'>
+      <UserProvider>
       <Router>
         <Header />
         <Routes>
@@ -21,6 +24,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
+      </UserProvider>
     </div>
   );
 };

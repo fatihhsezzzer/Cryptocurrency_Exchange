@@ -27,6 +27,37 @@ body{
     margin-top: 60px;
     font-size: 13px;
 }
+.crypt-box-menu{
+    color: white;
+}
+.crypt-table-market-cap {
+    background-color: black; 
+    color: white; 
+  }
+  
+  .crypt-table-market-cap th, .crypt-table-market-cap td {
+    background-color: #0b141e46;
+    color: white; 
+    border-color: #444; 
+  }
+  
+  .crypt-table-market-cap tr {
+    background-color: black !important; 
+  }
+  
+  .crypt-table-market-cap tr:nth-child(even), 
+  .crypt-table-market-cap tr:nth-child(odd) {
+    background-color: black !important; 
+  }
+  
+  .crypt-table-market-cap .crypt-up {
+    color: #0f0; 
+  }
+  
+  .crypt-table-market-cap .crypt-down {
+    color: #f00; 
+  }
+  
 iframe body{
     margin: 0;
 }
