@@ -9,25 +9,29 @@ const MarketCapTable = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
     const socket = new WebSocket('wss://localhost:32769/api/MarketData/ws-market-data');
 
     socket.onopen = () => {
+      console.log('WebSocket bağlantısı açıldı.');
       socket.send('İstemci WebSocket bağlantısını kurdu');
     };
 
-    
     socket.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
-       
-
-        
         if (Array.isArray(data)) {
           setCryptoData((prevData) => {
             const updatedData = [...data];
             return updatedData;
           });
+
+          // Modalda gösterilen coinin verilerini güncelle
+          if (selectedCoin) {
+            const updatedCoin = data.find((coin) => coin.InstId === selectedCoin.InstId);
+            if (updatedCoin) {
+              setSelectedCoin(updatedCoin);
+            }
+          }
         }
       } catch (error) {
         console.error('Mesaj işlenemedi:', error);
@@ -37,7 +41,7 @@ const MarketCapTable = () => {
     return () => {
       socket.close();
     };
-  }, []);
+  }, [selectedCoin]);
 
   const handleRowClick = (coin) => {
     if (!user) {
@@ -59,7 +63,6 @@ const MarketCapTable = () => {
           <h1 className="mt-5 mb-5 text-white">Kripto Para Birimleri ve Fiyatları</h1>
         </div>
       </div>
-
 
       <div className="container">
         <div className="row">
